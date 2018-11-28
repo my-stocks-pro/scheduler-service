@@ -49,8 +49,12 @@ func (s Scheduler) RPC(schedulerType string) {
 		fmt.Println(errReq)
 	}
 
-	_, errResp := s.HTTPClient.Do(req)
+	resp, errResp := s.HTTPClient.Do(req)
 	if errResp != nil {
 		fmt.Println(errReq)
+	}
+
+	if resp.StatusCode != 200 {
+		fmt.Println(resp.Status)
 	}
 }
