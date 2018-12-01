@@ -25,7 +25,7 @@ func (t *Ticker) Run(schedulerType string, c *gin.Context) {
 			c.JSON(statusCode, gin.H{
 				"SchedulerType": schedulerType,
 				"Error":         err,
-				"Tick":          tick,
+				"Tick":          tick.String(),
 			})
 
 			fmt.Println(err)

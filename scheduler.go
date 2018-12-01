@@ -12,6 +12,7 @@ type Ticker struct {
 	Scheduler  map[string]*time.Ticker
 	HTTPClient http.Client
 	APIGateWay string
+	Data       Schedul
 }
 
 type Scheduler struct {
