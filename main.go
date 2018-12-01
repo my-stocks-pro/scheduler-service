@@ -1,31 +1,29 @@
 package main
 
 import (
-	"fmt"
 	"os/signal"
 	"os"
 	"log"
 	"time"
 	"net/http"
 	"context"
+	"fmt"
 )
 
 const (
-	ServiceName = "scheduler-service"
-	EarningsTick = 5
-	ApprovedTick = 10
-	RejectedTick = 15
-	API = "127.0.0.1:9001/scheduler"
+	//ServiceName = "scheduler-service"
+	//EarningsTick = 5
+	//ApprovedTick = 10
+	//RejectedTick = 15
+	//API = "127.0.0.1:9001/scheduler"
 )
 
 func main() {
-	fmt.Println("scheduler-service")
-
 	scheduler := NewScheduler()
 
-	scheduler.Routing()
+	fmt.Println(fmt.Sprintf("%s INITIALIZE", scheduler.ServiceName))
 
-	scheduler.Run()
+	scheduler.Routing()
 
 	go func() {
 		if err := scheduler.Server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
