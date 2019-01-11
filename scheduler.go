@@ -37,7 +37,7 @@ func NewScheduler() *Scheduler {
 		QuitTick:    make(chan bool),
 		Router:      router,
 		Server: &http.Server{
-			Addr:    ":9001",
+			Addr:    ":9000",
 			Handler: router,
 		},
 		Tick: NewTick(),

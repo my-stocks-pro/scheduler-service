@@ -12,7 +12,7 @@ func NewTick() *Ticker {
 	return &Ticker{
 		Status:     false,
 		Scheduler:  map[string]*time.Ticker{},
-		APIGateWay: "http://127.0.0.1:9000/scheduler",
+		APIGateWay: "http://127.0.0.1:9001/gateway",
 		HTTPClient: http.Client{},
 	}
 }

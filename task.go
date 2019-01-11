@@ -2,13 +2,13 @@ package main
 
 import (
 	"net/http"
-	"bytes"
-	"github.com/kataras/iris/core/errors"
+	"errors"
+	"fmt"
 )
 
 func (s *Ticker) RPC(schedulerType string) (int, error) {
 
-	req, errReq := http.NewRequest(http.MethodPost, s.APIGateWay, bytes.NewReader([]byte(schedulerType)))
+	req, errReq := http.NewRequest(http.MethodGet, fmt.Sprintf("%s/%s", s.APIGateWay , schedulerType), nil)
 	if errReq != nil {
 		return http.StatusBadGateway, errReq
 	}
@@ -19,7 +19,7 @@ func (s *Ticker) RPC(schedulerType string) (int, error) {
 	}
 
 	if resp.StatusCode != 200 {
-		return resp.StatusCode, errors.New("")
+		return resp.StatusCode, errors.New(resp.Status)
 	}
 
 	return http.StatusOK, nil
